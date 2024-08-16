@@ -1,0 +1,9 @@
+footer {
+    width: 100%; /* Garante que o footer ocupe a largura total da página */
+    position: fixed;
+    bottom: 0;
+    background-color: #8bbef1; 
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+  }

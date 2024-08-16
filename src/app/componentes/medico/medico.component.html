@@ -1,0 +1,52 @@
+<div class="listaMedicos">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="th">Nome</th>
+        <th class="th centralizandoTextoTabela">ID</th>
+        <th class="th centralizandoTextoTabela">Telefone</th>
+        <th class="th centralizandoTextoTabela">Email</th>
+        <th class="th centralizandoTextoTabela">Especialização</th>
+        <th class="th centralizandoTextoTabela">Experiência</th>
+        <th class="th centralizandoTextoTabela">Status</th>
+        <th class="th centralizandoTextoTabela">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let medico of sortedMedicos; let i = index">
+        <tr [class.row-even]="i % 2 === 0" [class.row-odd]="i % 2 !== 0" class="linha-tabela">
+          <ng-container *ngIf="editIndex !== i; else editTemplate">
+            <td class="td">{{ medico.nomeMedico }}</td>
+            <td class="td centralizandoTextoTabela">{{ medico.idMedico }}</td>
+            <td class="td centralizandoTextoTabela">{{ medico.telefone }}</td>
+            <td class="td centralizandoTextoTabela">{{ medico.email }}</td>
+            <td class="td centralizandoTextoTabela">{{ medico.especializacao }}</td>
+            <td class="td centralizandoTextoTabela">{{ medico.experiencia }}</td>
+            <td class="td centralizandoTextoTabela">
+              <select [(ngModel)]="medico.status">
+                <option value="ATIVO">ATIVO</option>
+                <option value="INATIVO">INATIVO</option>
+              </select>
+            </td>            <td class="td centralizandoTextoTabela">
+              <button (click)="editMedico(i)">Editar</button>
+            </td>
+          </ng-container>
+          <ng-template #editTemplate>
+            <td class="td"><input [(ngModel)]="medico.nomeMedico"></td>
+            <td class="td centralizandoTextoTabela">{{ medico.idMedico }}</td>
+            <td class="td centralizandoTextoTabela"><input [(ngModel)]="medico.telefone"></td>
+            <td class="td centralizandoTextoTabela"><input [(ngModel)]="medico.email"></td>
+            <td class="td centralizandoTextoTabela"><input [(ngModel)]="medico.especializacao"></td>
+            <td class="td centralizandoTextoTabela"><input [(ngModel)]="medico.experiencia"></td>
+            <td class="td centralizandoTextoTabela"><input [(ngModel)]="medico.status"></td>
+            <td class="td centralizandoTextoTabela">
+              <button (click)="salvarMedico(medico)">Salvar</button>
+              <button (click)="cancelarEdicao()">Cancelar</button>
+            </td>
+          </ng-template>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <a routerLink="/medicoCadastro">Cadastrar novo médico</a>
+</div>

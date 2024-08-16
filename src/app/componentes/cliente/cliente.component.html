@@ -1,0 +1,61 @@
+<div class="listaClientes">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="th">Nome do cliente</th>
+        <th class="th centralizandoTextoTabela">IDCliente</th>
+        <th class="th centralizandoTextoTabela">Telefone</th>
+        <th class="th centralizandoTextoTabela">Email</th>
+        <th class="th centralizandoTextoTabela">Cpf</th>''
+        <th class="th centralizandoTextoTabela">Id do médico</th>
+        <th class="th centralizandoTextoTabela">Status</th>
+        <th class="th centralizandoTextoTabela">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let cliente of sortedClientes; let i = index">
+        <tr [class.row-even]="i % 2 === 0" [class.row-odd]="i % 2 !== 0" class="linha-tabela">
+          <ng-container *ngIf="editIndex !== i; else editTemplate">
+            <td class="td">{{ cliente.nomeCliente }}</td>
+            <td class="td centralizandoTextoTabela">{{ cliente.idCliente }}</td>
+            <td class="td centralizandoTextoTabela">{{ cliente.telefone }}</td>
+            <td class="td centralizandoTextoTabela">{{ cliente.email }}</td>
+            <td class="td centralizandoTextoTabela">{{ cliente.cpf }}</td>
+            <td class="td centralizandoTextoTabela">{{ cliente.idMedico }}</td>
+            <td class="td centralizandoTextoTabela">{{ cliente.status }}</td>
+            <td class="td centralizandoTextoTabela">
+              <button (click)="editCliente(i)">Editar</button>
+            </td>
+          </ng-container>
+          <ng-template #editTemplate>
+            <td class="td">
+              <input [(ngModel)]="cliente.nomeCliente" />
+            </td>
+            <td class="td centralizandoTextoTabela">{{ cliente.idCliente }}</td>
+            <td class="td centralizandoTextoTabela">
+              <input [(ngModel)]="cliente.telefone" />
+            </td>
+            <td class="td centralizandoTextoTabela">
+              <input [(ngModel)]="cliente.email" />
+            </td>
+            <td class="td centralizandoTextoTabela">
+              <input [(ngModel)]="cliente.cpf" />
+            </td>
+            <td class="td centralizandoTextoTabela">{{ cliente.idMedico }}</td>
+            <td class="td centralizandoTextoTabela">
+              <select [(ngModel)]="cliente.status">
+                <option value="ATIVO">ATIVO</option>
+                <option value="INATIVO">INATIVO</option>
+              </select>
+            </td>
+            <td class="td centralizandoTextoTabela">
+              <button (click)="salvarCliente(cliente)">Salvar</button>
+              <button (click)="cancelarEdicao()">Cancelar</button>
+            </td>
+          </ng-template>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <a routerLink="/clienteCadastro">Cadastrar novo cliente</a>
+</div>

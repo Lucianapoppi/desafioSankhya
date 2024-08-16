@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>Cadastrar Novo Médico</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="nomeMedico">Nome do Médico:</label>
+        <input type="text" id="nomeMedico" class="form-control" [(ngModel)]="medico.nomeMedico" name="nomeMedico" required />
+      </div>
+
+      <div class="col-md-6">
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" class="form-control" [(ngModel)]="medico.telefone" name="telefone" required />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="email">Email:</label>
+        <input type="email" id="email" class="form-control" [(ngModel)]="medico.email" name="email" required />
+      </div>
+
+      <div class="col-md-6">
+        <label for="especializacao">Especialização:</label>
+        <input type="text" id="especializacao" class="form-control" [(ngModel)]="medico.especializacao" name="especializacao" required />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="experiencia">Experiência:</label>
+        <input type="text" id="experiencia" class="form-control" [(ngModel)]="medico.experiencia" name="experiencia" required />
+      </div>
+
+      <div class="col-md-6">
+        <label for="status">Status:</label>
+        <select id="status" class="form-control" [(ngModel)]="medico.status" name="status" required>
+          <option value="ATIVO">Ativo</option>
+          <option value="INATIVO">Inativo</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+  </form>
+</div>

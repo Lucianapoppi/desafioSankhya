@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    background-color:#8bbef1
+  }
+
+img {
+    width: 100px;
+    height: auto;
+}
+
+.cadastro {
+    display: inline-block; 
+
+    margin: 2rem 2rem; 
+    
+    
+    text-decoration: none; 
+    color: #333; 
+    font-size: 16px; 
+  }
+  
+  .cadastro:hover {
+    color: #007bff; 
+  }
+
+  .nav-container {
+    text-align: center; 
+    padding: 5px 5px; 
+  }
