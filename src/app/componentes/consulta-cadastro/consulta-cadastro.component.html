@@ -1,1 +1,35 @@
-<p>consulta-cadastro works!</p>
+<div class="container">
+    <h2>Cadastrar Nova Consulta</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="dataConsulta">Data da Consulta:</label>
+          <input type="date" id="dataConsulta" class="form-control" [(ngModel)]="consulta.dataConsulta" name="dataConsulta" required />
+        </div>
+  
+        <div class="col-md-6">
+          <label for="horaConsulta">Hora da Consulta:</label>
+          <input type="time" id="horaConsulta" class="form-control" [(ngModel)]="consulta.horaConsulta" name="horaConsulta" required />
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6">
+          <label for="idCliente">Cliente:</label>
+          <select id="idCliente" class="form-control" [(ngModel)]="consulta.idCliente" name="idCliente" required>
+            <option *ngFor="let cliente of clientes" [value]="cliente.idCliente">{{ cliente.nomeCliente }}</option>
+          </select>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="idMedico">Médico Responsável:</label>
+          <select id="idMedico" class="form-control" [(ngModel)]="consulta.idMedico" name="idMedico" required>
+            <option *ngFor="let medico of medicos" [value]="medico.idMedico">{{ medico.nomeMedico }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
+    </form>
+  </div>
+  

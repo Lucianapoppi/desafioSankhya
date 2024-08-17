@@ -19,6 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { ClienteCadastroComponent } from './componentes/cliente-cadastro/cliente-cadastro.component';
+import { ConsultaComponent } from './componentes/consulta/consulta.component';
+import { ConsultaCadastroComponent } from './componentes/consulta-cadastro/consulta-cadastro.component';
 
 
 
@@ -34,6 +36,8 @@ import { ClienteCadastroComponent } from './componentes/cliente-cadastro/cliente
     ClienteComponent,
     MedicoCadastroComponent,
     ClienteCadastroComponent,
+    ConsultaComponent,
+    ConsultaCadastroComponent,
    
     
   ],

@@ -1,0 +1,58 @@
+<div class="listaConsultas">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="th">Data da Consulta</th>
+          <th class="th centralizandoTextoTabela">Hora da Consulta</th>
+          <th class="th centralizandoTextoTabela">ID Cliente</th>
+          <th class="th centralizandoTextoTabela">Nome do Cliente</th>
+          <th class="th centralizandoTextoTabela">Nome do Médico</th>
+          <th class="th centralizandoTextoTabela">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let consulta of sortedConsultas; let i = index">
+          <tr [class.row-even]="i % 2 === 0" [class.row-odd]="i % 2 !== 0" class="linha-tabela">
+            <ng-container *ngIf="editIndex !== i; else editTemplate">
+              <td class="td">{{ consulta.dataConsulta | date:'dd/MM/yyyy' }}</td>
+              <td class="td centralizandoTextoTabela">{{ consulta.horaConsulta }}</td>
+              <td class="td centralizandoTextoTabela">{{ consulta.idCliente }}</td>
+              <td class="td centralizandoTextoTabela">{{ getNomeCliente(consulta.idCliente) }}</td>
+              <td class="td centralizandoTextoTabela">{{ getNomeMedico(consulta.idMedico) }}</td>
+              <td class="td centralizandoTextoTabela">
+                <button (click)="editConsulta(i)">Editar</button>
+                <button *ngIf="consulta.idConsulta !== undefined" (click)="deletarConsulta(consulta.idConsulta)">Deletar</button>
+              </td>
+            </ng-container>
+            <ng-template #editTemplate>
+              <td class="td">
+                <input [(ngModel)]="consulta.dataConsulta" type="date" />
+              </td>
+              <td class="td centralizandoTextoTabela">
+                <input [(ngModel)]="consulta.horaConsulta" type="time" />
+              </td>
+              <td class="td centralizandoTextoTabela">
+                {{ consulta.idCliente }}
+              </td>
+              <td class="td centralizandoTextoTabela">
+                {{ getNomeCliente(consulta.idCliente) }}
+              </td>
+              <td class="td centralizandoTextoTabela">
+                <select [(ngModel)]="consulta.idMedico">
+                  <option *ngFor="let medico of medicosArray" [value]="medico.idMedico">
+                    {{ medico.nomeMedico }}
+                  </option>
+                </select>
+              </td>
+              <td class="td centralizandoTextoTabela">
+                <button (click)="salvarConsulta(consulta)">Salvar</button>
+                <button (click)="cancelarEdicao()">Cancelar</button>
+              </td>
+            </ng-template>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <a routerLink="/consultaCadastro">Cadastrar nova consulta</a>
+  </div>
+  

@@ -22,4 +22,9 @@ export class MedicoService {
   adicionarMedico(medico: Medico): Observable<Medico> {
     return this.http.post<Medico>(`${this.apiUrl}`, medico);
   }
+
+  buscarMedicoPorId(id: number): Observable<Medico> {
+    return this.http.get<Medico>(`${this.apiUrl}/${id}`);
+  }
+  
 }

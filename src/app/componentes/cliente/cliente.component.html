@@ -6,8 +6,8 @@
         <th class="th centralizandoTextoTabela">IDCliente</th>
         <th class="th centralizandoTextoTabela">Telefone</th>
         <th class="th centralizandoTextoTabela">Email</th>
-        <th class="th centralizandoTextoTabela">Cpf</th>''
-        <th class="th centralizandoTextoTabela">Id do médico</th>
+        <th class="th centralizandoTextoTabela">Cpf</th>
+        <th class="th centralizandoTextoTabela">Nome do médico</th>
         <th class="th centralizandoTextoTabela">Status</th>
         <th class="th centralizandoTextoTabela">Ações</th>
       </tr>
@@ -21,7 +21,7 @@
             <td class="td centralizandoTextoTabela">{{ cliente.telefone }}</td>
             <td class="td centralizandoTextoTabela">{{ cliente.email }}</td>
             <td class="td centralizandoTextoTabela">{{ cliente.cpf }}</td>
-            <td class="td centralizandoTextoTabela">{{ cliente.idMedico }}</td>
+            <td class="td centralizandoTextoTabela">{{ getNomeMedico(cliente.idMedico) }}</td>
             <td class="td centralizandoTextoTabela">{{ cliente.status }}</td>
             <td class="td centralizandoTextoTabela">
               <button (click)="editCliente(i)">Editar</button>
@@ -41,7 +41,13 @@
             <td class="td centralizandoTextoTabela">
               <input [(ngModel)]="cliente.cpf" />
             </td>
-            <td class="td centralizandoTextoTabela">{{ cliente.idMedico }}</td>
+            <td class="td centralizandoTextoTabela">
+              <select [(ngModel)]="cliente.idMedico">
+                <option *ngFor="let medico of medicosArray" [value]="medico.idMedico">
+                  {{ medico.nomeMedico }}
+                </option>
+              </select>
+            </td>
             <td class="td centralizandoTextoTabela">
               <select [(ngModel)]="cliente.status">
                 <option value="ATIVO">ATIVO</option>
